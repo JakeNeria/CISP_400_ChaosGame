@@ -1,5 +1,4 @@
 ﻿// Include important C++ libraries here
-//Partnered with Shabana Qasemi
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <iostream>
@@ -148,4 +147,5 @@ int main()
         window.display();
     }
 }
+
 
