@@ -4,13 +4,16 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
-#include <random>
+#include <cstdlib>
+#include <ctime>
 
 using namespace sf;
 using namespace std;
 
 int main()
 {
+    srand(static_cast<unsigned int>(time(nullptr)));
+    
     // Create a video mode object
     VideoMode vm(1920, 1080);
     // Create and open a window for the game
@@ -34,11 +37,6 @@ int main()
 
     vector<Vector2f> vertices;
     vector<Vector2f> points;
-
-    //Random Number Generator
-    random_device rd;
-    mt19937 rng(rd());
-    uniform_int_distribution<int> dist(0, 2);  // picks a vertex index 0..2
 
     while (window.isOpen())
     {
@@ -99,13 +97,13 @@ int main()
             for (int i = 0; i < 1000; i++)  
             {
                 // pick a random vertex index 0..2
-                int idx = dist(rng);
+                int r = rand() % 3;
 
                 // last generated point
                 Vector2f last = points.back();
 
                 // chosen vertex
-                Vector2f v = vertices[idx];
+                Vector2f v = vertices[r];
 
                 // midpoint formula for Chaos Game
                 // nextPoint = (last + vertex) / 2
@@ -147,5 +145,6 @@ int main()
         window.display();
     }
 }
+
 
 
